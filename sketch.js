@@ -5,6 +5,8 @@ function createGrid() {
     let cell;
     let gridContainer = document.querySelector('.container');
     gridContainer.style.display = 'inline-grid';
+    gridContainer.style.width = '800px';
+    gridContainer.style.height = '800px';
 
     for (let i = 0; i < GRID_ROWS; i++) {
         gridContainer.style.gridTemplateColumns += ' auto';
@@ -19,11 +21,16 @@ function createGrid() {
     let cellStyle = document.querySelectorAll('#grid-cell');
     cellStyle.forEach ((cell) => {
         cell.style.border = '1px solid black';
-        cell.style.width = '50px';
-        cell.style.height = '50px'
         cell.style.textAlign = 'center';
     });
 }
 
 document.querySelector('body').style.textAlign = 'center';
 createGrid();
+
+let cellAll = document.querySelectorAll('#grid-cell');
+cellAll.forEach ((cell) => {
+    cell.addEventListener('mouseover', () => {
+        cell.style.backgroundColor = 'black';
+    })
+})
