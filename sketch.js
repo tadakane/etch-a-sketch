@@ -17,9 +17,12 @@ function createGrid(gridsize) {
     cellStyle.forEach ((cell) => {
         cell.style.border = '0.5px solid black';
         cell.style.textAlign = 'center';
+        let colorOpacity = 0;
         cell.addEventListener('mouseover', () => {
-            if (drawMode === true) 
-                cell.style.backgroundColor = 'black';
+            if (drawMode === true) {
+                colorOpacity += 0.1;
+                cell.style.backgroundColor = 'rgba(0, 0, 0, ' + String(colorOpacity) + ')';
+            }
         })
     });
 }
@@ -65,7 +68,7 @@ extraContainer.appendChild(sizeBtn);
 
 let drawIndicator = document.createElement('div');
 drawIndicator.textContent = "DRAW";
-drawIndicator.style.padding = '10px 0px';
+drawIndicator.style.padding = '15px';
 drawIndicator.style.margin = '20px';
 drawIndicator.style.fontSize = '30px';
 
@@ -80,6 +83,7 @@ body.appendChild(extraContainer);
 body.appendChild(gridContainer);
 
 createGrid(16);
+
 sizeBtn.addEventListener('click', () => {
     while (gridContainer.firstChild) {
         gridContainer.removeChild(gridContainer.firstChild);
